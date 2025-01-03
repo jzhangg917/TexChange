@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -31,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // Start the Server
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5001; // local for now and will branch out soon
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on this port -> ${port}`);
 });
