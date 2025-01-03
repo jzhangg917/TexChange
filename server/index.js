@@ -12,10 +12,7 @@ app.use(express.json());
 // MongoDB Connection
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("MongoDB connected successfully!");
     } catch (err) {
         console.error("MongoDB connection error:", err);
@@ -28,6 +25,9 @@ connectDB();
 app.get("/", (req, res) => {
     res.send("API is working!");
 });
+
+const userRoutes = require("./routes/userRoutes");
+app.use("/users", userRoutes);
 
 // Start the Server
 const port = process.env.PORT || 5001; // local for now and will branch out soon
